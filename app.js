@@ -14,6 +14,10 @@ const userRoute = require("./routes/user/user")
 app.use(express.json());
 app.use(userRoute);
 
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static('frontend/build'));
+}
+
 app.listen(port, () => {
   console.log(`Ignio Skills listening at http://localhost:${port}`)
 })
