@@ -1,19 +1,17 @@
-const express = require('express')
+const express = require("express");
 require("./database/mongoose");
-const app = express()
+const userRouter = require("./routes/user/user");
+const app = express();
 
+//Defining Port
+const port = process.env.Port || 5000;
 
-
-//Defining Port 
-const port = process.env.Port || 3001;
-
-//Routers 
-const userRoute = require("./routes/user/user")
+//Routers
 
 //To recognize incoming requests as json object.
 app.use(express.json());
-app.use(userRoute);
+app.use(userRouter);
 
 app.listen(port, () => {
-  console.log(`Ignio Skills listening at http://localhost:${port}`)
-})
+  console.log(`Ignio Skills listening at http://localhost:${port}`);
+});
