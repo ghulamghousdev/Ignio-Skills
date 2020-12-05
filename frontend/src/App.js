@@ -1,34 +1,23 @@
 import React from "react";
-import {
-  BrowserRouter,
-  Route,
-  Switch
-} from "react-router-dom";
-import Navbar from './components/NavBar'
-import SignUp from "./components/SignUp";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import store from "./store";
+import { Provider } from "react-redux";
+import Navbar from "./components/NavBar";
 import Login from "./components/Login";
-import Homepage from "./components/Homepage";
+import Signup from "./components/SignUp";
 
-class App extends React.Component {
-
-  render() {
-    return (
-        <BrowserRouter>
+const App = () => {
+  return (
+    <Provider store={store}>
+      <BrowserRouter>
         <Navbar />
-          <Switch>
-          <Route path="/user/login">
-              <Login />
-            </Route>
-            <Route path="/user/signup">
-              <SignUp />
-            </Route>
-            <Route path="/">
-              <Homepage />
-            </Route>
-          </Switch>
-        </BrowserRouter>
-    );
-  }
-}
+        <Switch>
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
+        </Switch>
+      </BrowserRouter>
+    </Provider>
+  );
+};
 
 export default App;
