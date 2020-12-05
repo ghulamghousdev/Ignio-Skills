@@ -1,10 +1,9 @@
 import { useState } from "react";
 import "../styles/SignUpPage.scss";
 import { register } from "../actions/auth";
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
-const SignUp = ({ isAuthenticated, register }) => {
+const SignUp = ({register }) => {
   const [credentials, setCredentials] = useState({
     fullName: "",
     email: "",
@@ -26,7 +25,7 @@ const SignUp = ({ isAuthenticated, register }) => {
   const onChange = (e) =>
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   return (
-    <div>
+    <div className="container">
       <form className="signupform" onSubmit={(e) => onFormSubmit(e)}>
         <h1 className="logo">IgnioSkills</h1>
         <hr />
@@ -81,9 +80,9 @@ const SignUp = ({ isAuthenticated, register }) => {
         />
       </form>
       <div className="login">
-        <div className="loginprompt">
+        <div className="login__prompt">
           Already have account?{" "}
-          <a className="link simple" href="/user/signup">
+          <a className="link simple" href="/login">
             {" "}
             Login
           </a>
