@@ -1,84 +1,99 @@
-import React from 'react';
-import axios from 'axios';
-import auth from '../utils/auth'
-import '../styles/SignUpPage.scss';
+import { useState } from "react";
+import "../styles/SignUpPage.scss";
+import { register } from "../actions/auth";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
+const SignUp = ({ isAuthenticated, register }) => {
+  const [credentials, setCredentials] = useState({
+    fullName: "",
+    email: "",
+    username: "",
+    password: "",
+    password2: "",
+  });
 
-class SignUp extends React.Component {
-    SubmitHandler = async e =>{
-        e.preventDefault();
-        const fullName = e.target.elements.fullname.value;
-        const email = e.target.elements.email.value;
-        const username = e.target.elements.username.value;
-        const password = e.target.elements.password.value;
+  const { fullName, email, password, password2, username } = credentials;
 
-        const User = {
-            fullName,
-            email,
-            username,
-            password
-            }
-
-            try{
-                const config = {
-                    headers: {
-                        'Content-Type': 'Application/json'
-                    }
-                }
-                const body = JSON.stringify(User);
-                const res = await axios.post('/user/register', body, config);
-                auth.setAuthToken(res.data.token);
-                console.log(res)
-            } catch(error){
-                console.log(error);
-            }
+  const onFormSubmit = async (e) => {
+    e.preventDefault();
+    if (password !== password2) {
+    } else {
+      register(fullName, username, email, password);
     }
+  };
 
-    render(){
-        return (
-          <div>
-            <form className="signupform" onSubmit={this.SubmitHandler}>
-                <h1 className="logo">IgnioSkills</h1>
-                <hr />
-            <h3 className="signupform__heading">Sign Up</h3>
-            <input 
-              className="signupform__input" 
-              placeholder="Full Name" 
-              type="text" 
-              name="fullname"
-            />
-            <input 
-              className="signupform__input" 
-              placeholder="Email" 
-              type="email" 
-              name="email"
-            />
-            <input 
-              className="signupform__input" 
-              placeholder="Username" 
-              type="text" 
-              name="username"
-            />
-            <input 
-              className="signupform__input" 
-              placeholder="Password" 
-              type="password" 
-              name="password"
-            />
+  const onChange = (e) =>
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  return (
+    <div>
+      <form className="signupform" onSubmit={(e) => onFormSubmit(e)}>
+        <h1 className="logo">IgnioSkills</h1>
+        <hr />
+        <h3 className="signupform__heading">Sign Up</h3>
+        <input
+          className="signupform__input"
+          placeholder="Full Name"
+          type="text"
+          name="fullName"
+          value={fullName}
+          onChange={(e) => onChange(e)}
+        />
+        <input
+          className="signupform__input"
+          placeholder="Email"
+          type="email"
+          name="email"
+          value={email}
+          onChange={(e) => onChange(e)}
+        />
+        <input
+          className="signupform__input"
+          placeholder="Username"
+          type="text"
+          name="username"
+          value={username}
+          onChange={(e) => onChange(e)}
+        />
+        <input
+          className="signupform__input"
+          placeholder="Password"
+          type="password"
+          name="password"
+          value={password}
+          onChange={(e) => onChange(e)}
+        />
 
-            <input
-              className="signupform__btn"
-              type="submit"
-              name="submit"
-              value="Sign Up"
-            />
-          </form>
-          <div className="login">
-            <div className="loginprompt">Already have account? <a className="link simple" href="/user/signup"> Login</a></div>
-          </div>
+        <input
+          className="signupform__input"
+          placeholder="Confirm Password"
+          type="password"
+          name="password2"
+          value={password2}
+          onChange={(e) => onChange(e)}
+        />
+
+        <input
+          className="signupform__btn"
+          type="submit"
+          name="submit"
+          value="Sign Up"
+        />
+      </form>
+      <div className="login">
+        <div className="loginprompt">
+          Already have account?{" "}
+          <a className="link simple" href="/user/signup">
+            {" "}
+            Login
+          </a>
         </div>
-        )
-    }
-}
+      </div>
+    </div>
+  );
+};
 
-export default SignUp;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+export default connect(mapStateToProps, { register })(SignUp);
