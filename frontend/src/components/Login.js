@@ -25,7 +25,7 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <div>
+    <div className="flex-container">
       <form className="form" onSubmit={(e) => onFormSubmit(e)}>
         <h1 className="logo">IgnioSkills</h1>
         <hr />
@@ -55,9 +55,9 @@ const Login = ({ login, isAuthenticated }) => {
         />
       </form>
       <div className="register">
-        <div className="text">
+        <div className="register__text">
           Don't have account?{" "}
-          <a className="link simple" href="/user/signup">
+          <a className="link simple" href="/signup">
             {" "}
             Sign Up
           </a>
