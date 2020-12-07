@@ -1,9 +1,10 @@
 import { useState } from "react";
-import "../styles/SignUpPage.scss";
 import { register } from "../actions/auth";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import "../styles/SignUpPage.scss";
 
-const SignUp = ({register }) => {
+const SignUp = ({ register }) => {
   const [credentials, setCredentials] = useState({
     fullName: "",
     email: "",
@@ -25,67 +26,67 @@ const SignUp = ({register }) => {
   const onChange = (e) =>
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   return (
-    <div className="container">
-      <form className="signupform" onSubmit={(e) => onFormSubmit(e)}>
-        <h1 className="logo">IgnioSkills</h1>
-        <hr />
-        <h3 className="signupform__heading">Sign Up</h3>
-        <input
-          className="signupform__input"
-          placeholder="Full Name"
-          type="text"
-          name="fullName"
-          value={fullName}
-          onChange={(e) => onChange(e)}
-        />
-        <input
-          className="signupform__input"
-          placeholder="Email"
-          type="email"
-          name="email"
-          value={email}
-          onChange={(e) => onChange(e)}
-        />
-        <input
-          className="signupform__input"
-          placeholder="Username"
-          type="text"
-          name="username"
-          value={username}
-          onChange={(e) => onChange(e)}
-        />
-        <input
-          className="signupform__input"
-          placeholder="Password"
-          type="password"
-          name="password"
-          value={password}
-          onChange={(e) => onChange(e)}
-        />
+    <div className="flex-va-center">
+      <div className="auth-container">
+        <form className="signup-form" onSubmit={(e) => onFormSubmit(e)}>
+          <h2 className="signup-form__heading">Just Sign Up to continue</h2>
+          <input
+            className="signup-form__input"
+            placeholder="Full Name"
+            type="text"
+            name="fullName"
+            value={fullName}
+            onChange={(e) => onChange(e)}
+          />
+          <input
+            className="signup-form__input"
+            placeholder="Email"
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => onChange(e)}
+          />
+          <input
+            className="signup-form__input"
+            placeholder="Username"
+            type="text"
+            name="username"
+            value={username}
+            onChange={(e) => onChange(e)}
+          />
+          <input
+            className="signup-form__input"
+            placeholder="Password"
+            type="password"
+            name="password"
+            value={password}
+            onChange={(e) => onChange(e)}
+          />
 
-        <input
-          className="signupform__input"
-          placeholder="Confirm Password"
-          type="password"
-          name="password2"
-          value={password2}
-          onChange={(e) => onChange(e)}
-        />
+          <input
+            className="signup-form__input"
+            placeholder="Confirm Password"
+            type="password"
+            name="password2"
+            value={password2}
+            onChange={(e) => onChange(e)}
+          />
 
-        <input
-          className="signupform__btn"
-          type="submit"
-          name="submit"
-          value="Sign Up"
-        />
-      </form>
-      <div className="login">
-        <div className="login__prompt">
-          Already have account?{" "}
-          <a className="link simple" href="/login">
-            {" "}
-            Login
-          </a>
+          <input
+            className="signup-form__btn"
+            type="submit"
+            name="submit"
+            value="Sign Up"
+          />
+        </form>
+        <div className="other-auth">
+          <div className="other-auth__text">
+            Already have account?{" "}
+            <Link className="other-auth__link" to="/login">
+              {" "}
+              Login
+            </Link>
+          </div>
         </div>
       </div>
     </div>
