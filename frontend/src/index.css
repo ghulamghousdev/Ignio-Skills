@@ -1,13 +1,66 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  font-family: "Source Sans Pro", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  width: 100%;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+p,
+a,
+span {
+  font-size: 16px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid #555555;
+  -webkit-text-fill-color: #333333;
+  transition: background-color 5000s ease-in-out 0s;
+  font-size: 15px;
+}
+
+.flex-va-center {
+  display: flex;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.auth-container {
+  max-width: 320px;
+  margin: 0px auto;
+}
+
+.other-auth {
+  text-align: center;
+}
+
+.other-auth__link {
+  font-weight: 700;
+  margin-left: 10px;
+  color: #002333;
+}
+
+@media only screen and (max-width: 480px) {
+  .auth-container {
+    width: 80%;
+  }
 }
