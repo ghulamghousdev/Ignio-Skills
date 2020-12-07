@@ -1,8 +1,8 @@
-import { React, useState } from "react";
-import "../styles/LoginPage.scss";
+import { React, useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { login } from "../actions/auth";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
+import "../styles/LoginPage.scss";
 
 const Login = ({ login, isAuthenticated }) => {
   const [credentials, setCredentials] = useState({
@@ -25,45 +25,47 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <div className="flex-container">
-      <form className="form" onSubmit={(e) => onFormSubmit(e)}>
-        <h1 className="logo">IgnioSkills</h1>
-        <hr />
-        <h3 className="form__heading">Login</h3>
-        <input
-          className="form__input"
-          type="text"
-          name="email"
-          value={email}
-          onChange={(e) => onChange(e)}
-          placeholder="Username or email"
-        />
-        <input
-          className="form__input"
-          type="password"
-          name="password"
-          value={password}
-          onChange={(e) => onChange(e)}
-          placeholder="Password"
-        />
+    <Fragment>
+      <div className="flex-va-center">
+        <div className="auth-container">
+          <form className="login-form" onSubmit={(e) => onFormSubmit(e)}>
+            <h2 className="login-form__heading">Just login to continue</h2>
+            <input
+              className="login-form__input"
+              type="text"
+              name="email"
+              value={email}
+              onChange={(e) => onChange(e)}
+              placeholder="Username or email"
+            />
+            <input
+              className="login-form__input"
+              type="password"
+              name="password"
+              value={password}
+              onChange={(e) => onChange(e)}
+              placeholder="Password"
+            />
 
-        <input
-          className="form__btn"
-          type="submit"
-          name="submit"
-          value="Login"
-        />
-      </form>
-      <div className="register">
-        <div className="register__text">
-          Don't have account?{" "}
-          <a className="link simple" href="/signup">
-            {" "}
-            Sign Up
-          </a>
+            <input
+              className="login-form__btn"
+              type="submit"
+              name="submit"
+              value="Login"
+            />
+          </form>
+          <div className="other-auth">
+            <div className="other-auth__text">
+              Don't have account?{" "}
+              <Link className="other-auth__link" to="/signup">
+                {" "}
+                Sign Up
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 
