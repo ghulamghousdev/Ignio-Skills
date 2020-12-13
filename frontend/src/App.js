@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import Navbar from "./components/NavBar";
 import Login from "./components/Login";
 import Signup from "./components/SignUp";
+import Homepage from "./components/Homepage"
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Switch>
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
+          <Route path="/" component={Homepage} />
         </Switch>
       </BrowserRouter>
     </Provider>
