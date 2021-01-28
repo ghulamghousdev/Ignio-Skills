@@ -1,8 +1,7 @@
 const express = require("express");
 require("./database/mongoose");
-const UserRouter = require('./routes/user/user');
+const UserRouter = require('./routes/user/User');
 const app = express();
-const bodyParser = require('body-parser')
 const cors = require('cors');
 const UploadCourse = require('./routes/courseUpload/UploadFile');
 const CourseDetails = require('./routes/courseUpload/CourseDetailsRoute');
