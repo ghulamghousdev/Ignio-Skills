@@ -1,0 +1,35 @@
+.creationManual{
+    width: 60%;
+    margin: 0px auto;
+    margin-top: 40px;
+    &__continue-btn {
+        float:left;
+        width:50%;
+        text-align: center;
+        margin-top:20px;
+        margin-bottom: 30px;
+        margin-left: 25%;
+        margin-right:25%;
+        padding: 12px;
+        padding-right:20px;
+        padding-left: 20px;
+        cursor: pointer;
+        border: 1px solid #ffa500;
+        background-color: #ffa500;
+        font-size: 15px;
+        border-radius: 20px;
+        color: #ffffff;
+        transition: 0.3s;
+        font-weight: bold;
+        &:hover {
+          background-color: darken(#ffa500, 10%);
+          border-color: darken(#ffa500, 10%);
+        }
+      }
+}
+.heading{
+    font-family: Roboto;
+    line-height: 39px;
+    color: #29303b;
+}
+
