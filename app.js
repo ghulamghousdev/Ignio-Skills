@@ -1,14 +1,28 @@
 const express = require("express");
 require("./database/mongoose");
-const userRouter = require("./routes/user/user");
+const UserRouter = require('./routes/user/user');
 const app = express();
+const bodyParser = require('body-parser')
+const cors = require('cors');
+const UploadCourse = require('./routes/courseUpload/UploadFile');
+const CourseDetails = require('./routes/courseUpload/CourseDetailsRoute');
 
 //Defining Port
-const port = process.env.Port || 5000;
+const port = process.env.Port || 5100;
 
 //To recognize incoming requests as json object.
+app.use(cors());
 app.use(express.json());
-app.use(userRouter);
+app.use(express.urlencoded({extended: true}));
+app.use(UserRouter);
+app.use(UploadCourse);
+app.use(CourseDetails);
+
+
+app.post('/api/upload', function (req, res) {
+  res.send({image: true, file: req.files.userFile.originalname, savedAs: req.files.userFile.name});
+});
+
 
 app.listen(port, () => {
   console.log(`Ignio Skills listening at http://localhost:${port}`);
