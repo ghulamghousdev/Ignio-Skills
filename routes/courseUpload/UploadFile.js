@@ -1,11 +1,12 @@
 const express = require("express");
-const path = require('path')
-const Grid = require ('gridfs-stream')
-const multer = require('multer')
-const crypto = require('crypto')
+const path = require('path');
+const Grid = require ('gridfs-stream');
+const multer = require('multer');
+const crypto = require('crypto');
 const GridFsStorage = require ('multer-gridfs-storage');
 const router = express.Router();
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const AddContent = require('../../models/AddContent');
 
 const mongoURI = "mongodb://ghulamghousdev:ggatazfm@ignioskills-shard-00-00.jj1pk.mongodb.net:27017,ignioskills-shard-00-01.jj1pk.mongodb.net:27017,ignioskills-shard-00-02.jj1pk.mongodb.net:27017/elearning?ssl=true&replicaSet=atlas-bou4tb-shard-0&authSource=admin&retryWrites=true&w=majority"
 const conn = mongoose.createConnection(mongoURI, {  useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true})
@@ -39,6 +40,28 @@ const upload = multer({ storage });
 
 router.post('/api/upload', upload.single('file'), (req, res) =>{
     res.json({file: req.file});
+})
+
+router.post('/api/upload/video', upload.single('file'), async (req, res) =>{
+  if (!req.file) {
+    res.status(404).send({ err: "Please attach an video with the post" });
+  }
+  try {
+    //Creating a new post
+    const addVideo = {
+      videoTitle: req.body.videoTitle,
+      videoDescription: req.body.videoDescription,
+      videoID: req.file.filename,
+    };
+    console.log(addVideo);
+
+    const addCourseContent = new AddContent(addVideo);
+    await addCourseContent.save();
+    res.status(200).send(addCourseContent);
+  } catch (err) {
+    res.status(500).send({ err });
+  }
+
 })
 
 router.get('/api/files', (req,res)=>{
