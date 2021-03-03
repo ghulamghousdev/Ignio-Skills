@@ -12,8 +12,8 @@ const courseDetailsSchema = mongoose.Schema({
   category: {
     type: String,
     required: true,
-    trim: true
-    },
+    trim: true,
+  },
 
   //Defining description property on User Schema
   description: {
@@ -28,7 +28,13 @@ const courseDetailsSchema = mongoose.Schema({
     required: true,
     trim: true,
   },
+
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
 });
 
-const CourseDetails = mongoose.model("CourseDetails", courseDetailsSchema)
+const CourseDetails = mongoose.model("CourseDetails", courseDetailsSchema);
 module.exports = CourseDetails;

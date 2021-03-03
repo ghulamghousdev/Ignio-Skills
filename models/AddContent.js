@@ -1,6 +1,18 @@
 const mongoose = require("mongoose");
 
 const addContentSchema = mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
+
+  course: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "CourseDetails",
+  },
+
   //Defining title property on Add Contnet Schema
   videoTitle: {
     type: String,
@@ -12,8 +24,8 @@ const addContentSchema = mongoose.Schema({
   videoDescription: {
     type: String,
     required: true,
-    trim: true
-    },
+    trim: true,
+  },
 
   //Defining the video ID property on Add Content Schema
   videoID: {
@@ -23,5 +35,5 @@ const addContentSchema = mongoose.Schema({
   },
 });
 
-const AddContent = mongoose.model("AddContent", addContentSchema)
+const AddContent = mongoose.model("AddContent", addContentSchema);
 module.exports = AddContent;
