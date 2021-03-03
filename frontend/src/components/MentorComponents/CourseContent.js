@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 const AddVideo = () => {
 
   const {data, setData} = useState(null);
 
-  componentDidMount(){
-    fetchData();
-  }
 
   const fetchData = async () => {
     try{

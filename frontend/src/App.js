@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Signup from "./components/SignUp";
 import Homepage from "./components/Homepage";
 import MentorDashboard from './components/MentorComponents/MentorDashboard';
+import CourseView from "./components/CourseView";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/homepage" component={Homepage} />
           <Route path="/mentor" component={MentorDashboard}/>
+          <Route path="/courseview" component={CourseView}/>
           <Route path="/" component={Homepage} />
         </Switch>
       </BrowserRouter>
