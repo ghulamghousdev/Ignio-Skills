@@ -8,6 +8,7 @@ import axios from "axios";
 import setGlobalAuthToken from "../utils/setToken";
 
 export const login = (email, password) => async (dispatch) => {
+  console.log(email, password);
   const config = {
     headers: {
       "Content-Type": "application/json",
