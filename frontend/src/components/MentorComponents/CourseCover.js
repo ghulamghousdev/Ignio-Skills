@@ -19,6 +19,7 @@ const CourseCover = ({coverName, setCoverName, saveData})=>{
           }
         }
         const res = await axios.post('/api/upload', data, config);
+
         setCoverName(res.data.file.filename)
         } catch(e){
             console.log(e); 
