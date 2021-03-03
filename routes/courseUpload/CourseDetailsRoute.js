@@ -4,7 +4,7 @@ const auth = require("../../middlewares/auth");
 const CourseDetails = require("../../models/CourseDetailsModel");
 
 //To add a new course
-router.post("/api/createcourse/coursedetails", async (req, res) => {
+router.post("/api/createcourse/coursedetails", auth, async (req, res) => {
   const course = new CourseDetails({
     ...req.body,
     user: req.user._id,
@@ -19,7 +19,7 @@ router.post("/api/createcourse/coursedetails", async (req, res) => {
 });
 
 //Get all the courses
-router.get("/api/createcourse/coursedetails", async (req, res) => {
+router.get("/api/createcourse/coursedetails", auth, async (req, res) => {
   try {
     await req.user.populate("course").execPopulate();
     res.status(201).send(req.user.course);
@@ -28,7 +28,7 @@ router.get("/api/createcourse/coursedetails", async (req, res) => {
   }
 });
 //Get a course by its _id
-router.get("/api/createcourse/coursedetails/:id", async (req, res) => {
+router.get("/api/createcourse/coursedetails/:id", auth, async (req, res) => {
   const _id = req.params.id;
   try {
     const course = await CourseDetails.findOne({ _id, author: req.user._id });

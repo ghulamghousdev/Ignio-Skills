@@ -43,43 +43,37 @@ var storage = new GridFsStorage({
 
 const upload = multer({ storage });
 
-router.post("/api/upload", upload.single("file"), (req, res) => {
+router.post("/api/upload", auth, upload.single("file"), (req, res) => {
   res.json({ file: req.file });
 });
 
-router.post("/api/upload/video", upload.single("file"), async (req, res) => {
-  if (!req.file) {
-    res.status(404).send({ err: "Please attach an video with the post" });
-  }
-  try {
-    //Creating a new post
-    const addVideo = {
-      videoTitle: req.body.videoTitle,
-      videoDescription: req.body.videoDescription,
-      videoID: req.file.filename,
-      user: req.user._id,
-      course: req.body.courseId,
-    };
-    console.log(addVideo);
-
-    const addCourseContent = new AddContent(addVideo);
-    await addCourseContent.save();
-    res.status(200).send(addCourseContent);
-  } catch (err) {
-    res.status(500).send({ err });
-  }
-});
-
-router.get("/api/files", (req, res) => {
-  gfs.files.find().toArray((err, files) => {
-    if (!files || files.length === 0) {
-      res.status(404).json({
-        err: "No Such Files Exists",
-      });
+router.post(
+  "/api/upload/video",
+  auth,
+  upload.single("file"),
+  async (req, res) => {
+    if (!req.file) {
+      res.status(404).send({ err: "Please attach an video with the post" });
     }
-    return res.json(files);
-  });
-});
+    try {
+      //Creating a new post
+      const addVideo = {
+        videoTitle: req.body.videoTitle,
+        videoDescription: req.body.videoDescription,
+        videoID: req.file.filename,
+        user: req.user._id,
+        course: req.body.courseId,
+      };
+      console.log(addVideo);
+
+      const addCourseContent = new AddContent(addVideo);
+      await addCourseContent.save();
+      res.status(200).send(addCourseContent);
+    } catch (err) {
+      res.status(500).send({ err });
+    }
+  }
+);
 
 //Get file from file name
 router.get("/api/files/:filename", (req, res) => {
