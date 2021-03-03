@@ -3,7 +3,7 @@ const validator = require("validator");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
   //Defining full name property on User Schema
   fullName: {
     type: String,
@@ -105,6 +105,6 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+
+module.exports = mongoose.model("User", userSchema);
