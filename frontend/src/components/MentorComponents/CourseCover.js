@@ -11,25 +11,6 @@ const CourseCover = ({ coverName, setCoverName, saveData }) => {
     const data = new FormData();
     data.append("file", file);
 
-<<<<<<< HEAD
-      try{
-        const config = {
-          headers: {
-            'Content-Type': 'Application/json'
-          }
-        }
-        const res = await axios.post('/api/upload', data, config);
-
-        setCoverName(res.data.file.filename)
-        } catch(e){
-            console.log(e); 
-            let error={message: "Something went wrong. Try again!"};
-            let errors = [];
-            this.setState({
-                errors: errors.concat(error)
-            })
-        }
-=======
     try {
       const config = {
         headers: {
@@ -41,7 +22,6 @@ const CourseCover = ({ coverName, setCoverName, saveData }) => {
       console.log(res);
     } catch (e) {
       console.log(e);
->>>>>>> c85b2bc4b901199ff14853ce947264702a4086c1
     }
   };
 
