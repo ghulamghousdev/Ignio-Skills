@@ -1,41 +1,43 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 const AddVideo = () => {
-
-  const {data, setData} = useState(null);
-
-  componentDidMount(){
-    fetchData();
-  }
+  const { data, setData } = useState(null);
 
   const fetchData = async () => {
-    try{
+    try {
       const config = {
         headers: {
-            'Content-Type': 'Application/json',
+          "Content-Type": "Application/json",
+        },
+      };
+      const res = await axios.get("/api/subjects", config);
+      this.setState(
+        (prevState, props) => {
+          return {
+            subjects: prevState.subjects.concat(res.data),
+          };
+        },
+        () => {
+          console.log(this.state);
         }
-      }
-      const res = await axios.get('/api/subjects', config);
-      this.setState((prevState, props)=>{
-        return ({
-          subjects: prevState.subjects.concat(res.data)
-        })
-      }, ()=>{
-        console.log(this.state);
-      })
-    } catch(err){
-      console.log(err)
+      );
+    } catch (err) {
+      console.log(err);
     }
-  }
-    
-    return (
-        <div className= "course-container">
-            <div> Add Videos</div>
-            <Link className="course-container__continue-btn" to={`/mentor/create-course/content/video`}>
-              Add Video
-            </Link>
-        </div>
+  };
+
+  return (
+    <div className="course-container">
+      <div> Add Videos</div>
+      <Link
+        className="course-container__continue-btn"
+        to={`/mentor/create-course/content/video`}
+      >
+        Add Video
+      </Link>
+    </div>
   );
-}
+};
 
 export default AddVideo;
