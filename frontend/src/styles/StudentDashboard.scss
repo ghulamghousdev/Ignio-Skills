@@ -1,0 +1,150 @@
+// .student-dashboard {
+//   display: flex;
+// }
+
+// .student-sidemenu {
+//   width: 20%;
+// }
+
+.registered-courses {
+  flex: 1;
+
+  & > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 80%;
+    margin: 40px auto;
+    grid-gap: 20px;
+  }
+}
+
+.registered-course {
+  display: block;
+  overflow: hidden;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  position: relative;
+  padding-bottom: 50px;
+
+  &__img-cont {
+    width: 100%;
+    height: 150px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  &__title {
+    font-size: 15px;
+    color: #333333;
+    margin-bottom: 8px;
+  }
+
+  &__author {
+    font-size: 12px;
+    font-weight: 300;
+    color: #666666;
+    margin-bottom: 10px;
+  }
+
+  &__content {
+    padding: 15px;
+  }
+
+  &__rating {
+    font-size: 14px;
+    color: #333333;
+  }
+
+  &__rating-number {
+    background-color: #ffa500;
+    padding: 3px 6px;
+    color: #ffffff;
+    border-radius: 2px;
+    font-size: 14px;
+    border: 1px solid darken(#ffa500, 5);
+    margin-left: auto;
+    display: inline-block;
+  }
+}
+
+.registered-course:hover .hover-board {
+  transform: translateY(0);
+}
+
+.hover-board {
+  position: absolute;
+  background-color: #f5f5f5;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transform: translateY(85%);
+  transition: transform 0.3s ease-in;
+  cursor: pointer;
+
+  &__btn-cont {
+    height: 15%;
+    background-color: #ffa500;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    height: 40px;
+  }
+
+  &__btn {
+    background-color: #002333;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > p {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+  }
+  &__content {
+    padding: 15px;
+    height: 85%;
+    position: relative;
+  }
+
+  &__title {
+    color: #002333;
+  }
+
+  &__description {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #555555;
+  }
+
+  &__watch-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffa500;
+    color: #ffffff;
+    display: block;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.3s ease-in;
+
+    &:hover {
+      background-color: darken(#ffa500, 10);
+    }
+  }
+}
