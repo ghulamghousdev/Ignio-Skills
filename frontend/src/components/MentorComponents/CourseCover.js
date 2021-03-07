@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import "../../styles/CourseCover.scss";
 import { Link } from "react-router-dom";
+import upload_img from "../../assets/upload.jpg";
 import axios from "axios";
 
 const CourseCover = ({ coverName, setCoverName, saveData }) => {
-  const [file, setFile] = useState();
+  const [file, setFile] = useState({
+    file: null,
+    fileUrl: null,
+  });
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append("file", file);
+    data.append("file", file.file);
 
     try {
       const config = {
@@ -29,84 +33,85 @@ const CourseCover = ({ coverName, setCoverName, saveData }) => {
     <div className="coursecover-container">
       <form onSubmit={(e) => handleFormSubmit(e)}>
         <h2 className="coursecover-container__heading">Upload Cover Image</h2>
-        <p>
+        <p className="coursecover-container__para">
           If you are not sure about it, just upload something related to your
           course as you can edit it later on
         </p>
-        {coverName ? (
+
+        {/* Rendering image */}
+
+        {file.file !== null ? (
           <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
+            className="image-container"
+            style={{ display: "flex-box", flexDirection: "column" }}
           >
-            <img
-              src={`http://localhost:5100/api/image/${coverName}`}
-              style={{
-                width: "30%",
-                height: "30%",
-                marginTop: "30px",
-                marginBottom: "30px",
-              }}
-              alt="Course Thumbnail"
-            />
-            <label htmlFor="file"></label>
+            <label htmlFor="file">
+              <img
+                src={file.fileUrl}
+                alt="Course Thumbnail"
+                className="show-img"
+              />
+            </label>
             <input
               type="file"
               id="file"
-              className={{ marginLeft: "20px" }}
+              style={{ display: "none" }}
               accept=".png, .jpeg, .jpg"
               onChange={(event) => {
-                const file = event.target.files[0];
-                setFile(file);
+                setFile({
+                  file: event.target.files[0],
+                  fileUrl: URL.createObjectURL(event.target.files[0]),
+                });
               }}
             />
             <input
-              className="coursecover-container__upload-button"
+              className="coursecover-container__cover_upload-button"
               type="submit"
               name="submit"
               value="Upload"
             />
           </div>
         ) : (
-          <section className="coursecover-container__upload-box">
+          <div className="coursecover-container hide-input">
             <label htmlFor="file" style={{ marginTop: "90px" }}>
-              Upload Cover
+              <img src={upload_img} alt="upload" className="upload-img" />
             </label>
             <input
               type="file"
               id="file"
+              style={{ display: "none" }}
               accept=".png, .jpeg, .jpg"
-              style={{ marginTop: "20px", marginLeft: "50px" }}
               onChange={(event) => {
-                const file = event.target.files[0];
-                setFile(file);
+                setFile({
+                  file: event.target.files[0],
+                  fileUrl: URL.createObjectURL(event.target.files[0]),
+                });
               }}
             />
             <input
-              className="coursecover-container__upload-button"
+              className="coursecover-container__cover_upload-button"
+              style={{ display: "none" }}
               type="submit"
               name="submit"
               value="Upload"
             />
-          </section>
+          </div>
         )}
       </form>
-
-      <Link
-        className="coursecover-container__previous-btn"
-        to="/mentor/create-cover/description"
-      >
-        Previous
-      </Link>
-      <button
-        className="coursecover-container__continue-btn"
-        onClick={(e) => saveData(e)}
-      >
-        {" "}
-        Save{" "}
-      </button>
+      <div className="flex-space-between-cover">
+        <Link
+          className="coursecover-container__previous-btn"
+          to="/mentor/create-course/objectives"
+        >
+          Previous
+        </Link>
+        <button
+          className="coursecover-container__continue-btn"
+          onClick={(e) => saveData(e)}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };
