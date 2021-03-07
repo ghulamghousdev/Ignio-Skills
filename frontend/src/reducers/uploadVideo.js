@@ -22,9 +22,8 @@ const upload = (upload = initialState, action) => {
       data: null,
       isLoading: false,
     };
-  } else {
-    return upload;
   }
+  return upload;
 };
 
 export default upload;

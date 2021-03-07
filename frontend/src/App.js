@@ -7,7 +7,8 @@ import Login from "./components/Login";
 import Signup from "./components/SignUp";
 import Homepage from "./components/Homepage";
 import MentorDashboard from "./components/MentorComponents/MentorDashboard";
-import CourseView from "./components/CourseView";
+import CourseView from "./components/MentorComponents/CourseViewMentor";
+import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
 import StudentDashboard from "./components/StudentComponents/Dashboard";
 
 const App = () => {
@@ -20,8 +21,9 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/homepage" component={Homepage} />
           <Route path="/mentor" component={MentorDashboard} />
-          <Route path="/student" component={StudentDashboard} />
           <Route path="/courseview" component={CourseView} />
+          <Route path="/videoplayer" component={VideoPlayer} />
+          <Route path="/student" component={StudentDashboard} />
           <Route path="/" component={Homepage} />
         </Switch>
       </BrowserRouter>

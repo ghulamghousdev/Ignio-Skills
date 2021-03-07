@@ -1,63 +1,64 @@
-.course-container{
-    text-align: center;
-    margin-top: 90px;
-    margin-bottom: 100px;
-    &__title{
-        margin: 20px 5px 5px 5px;
-        padding: 10px;
-        width: 40%;
-    }
-    &__title:focus {
-        outline: 1px solid #49a8d4;
-      }
+.course-container {
+  text-align: center;
+  margin-top: 90px;
+  margin-bottom: 100px;
+  &__title {
+    margin: 20px 5px 5px 5px;
+    padding: 10px;
+    width: 40%;
+  }
+  &__title:focus {
+    outline: 1px solid #49a8d4;
+  }
 
-    &__heading{
-        font-weight: normal;
-        line-height: 60px;
+  &__heading {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 60px;
+  }
+  &__category {
+    margin-top: 30px;
+    font-weight: normal;
+    line-height: 60px;
+  }
+  &__continue-btn {
+    float: right;
+    margin-top: 40px;
+    margin-right: 100px;
+    padding: 8px;
+    padding-right: 20px;
+    padding-left: 20px;
+    cursor: pointer;
+    border: 1px solid #ffa500;
+    background-color: #ffa500;
+    font-size: 15px;
+    border-radius: 5px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    font-weight: bold;
+    &:hover {
+      background-color: darken(#ffa500, 10%);
+      border-color: darken(#ffa500, 10%);
     }
-    &__category{
-        margin-top: 30px;
-        font-weight: normal;
-        line-height: 60px;
-    }
-    &__continue-btn {
-        float: right;
-        margin-top:40px;
-        margin-right:100px;
-        padding: 8px;
-        padding-right:20px;
-        padding-left: 20px;
-        cursor: pointer;
-        border: 1px solid #ffa500;
-        background-color: #ffa500;
-        font-size: 15px;
-        border-radius: 5px;
-        color: #ffffff;
-        margin-bottom: 20px;
-        transition: 0.3s;
-        font-weight: bold;
-        &:hover {
-          background-color: darken(#ffa500, 10%);
-          border-color: darken(#ffa500, 10%);
-        }
-      }
+  }
 }
 
 @media only screen and (max-width: 480px) {
-    .course-container{
-        margin-top: 30px;
-        padding-right: 15px;
-        padding-left:15px;
-        &__title{
-            width: 85%;
-        }
- 
-        &__category-box{
-            width: 400%;
-        }
-        &__continue-btn {
-            margin-top:100px;
-            margin-right:20px;
-          }
+  .course-container {
+    margin-top: 30px;
+    padding-right: 15px;
+    padding-left: 15px;
+    &__title {
+      width: 85%;
     }
+
+    &__category-box {
+      width: 400%;
+    }
+    &__continue-btn {
+      margin-top: 100px;
+      margin-right: 20px;
+    }
+  }
 }

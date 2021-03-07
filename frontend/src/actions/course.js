@@ -4,10 +4,14 @@ import {
 } from "../actions/actionTypes";
 import axios from "axios";
 
-export const createCourse = (title, category, description, coverName) => async (
-  dispatch
-) => {
-  const course = { title, category, description, coverName };
+export const createCourse = (
+  title,
+  category,
+  description,
+  courseObjectives,
+  coverName
+) => async (dispatch) => {
+  const course = { title, category, description, courseObjectives, coverName };
   try {
     const config = {
       headers: {

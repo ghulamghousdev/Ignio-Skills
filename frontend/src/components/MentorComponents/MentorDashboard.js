@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useRouteMatch, Route, Switch } from "react-router-dom";
 import CreateCourseManual from "./CreateCourseManual";
 import CourseHeading from "./CourseHeading";
-import CourseContent from "./CourseContent";
+import CourseContent from "./CourseViewMentor";
 import CourseDescription from "./CourseDescription";
+import CourseObjectives from "./CourseObjectives";
 import CourseCover from "./CourseCover";
 import AddVideo from "./AddVideo";
 import { connect } from "react-redux";
@@ -14,11 +15,12 @@ const MentorDashboard = ({ createCourse }) => {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [coverName, setCoverName] = useState(null);
+  const [courseObjectives, setCourseObjectives] = useState([]);
 
   let { path } = useRouteMatch();
 
   const saveData = async (e) => {
-    createCourse(title, category, description, coverName);
+    createCourse(title, category, description, courseObjectives, coverName);
   };
 
   return (
@@ -28,6 +30,12 @@ const MentorDashboard = ({ createCourse }) => {
       </Route>
       <Route path={`${path}/create-course/description`}>
         <CourseDescription setDescription={setDescription} />
+      </Route>
+      <Route path={`${path}/create-course/objectives`}>
+        <CourseObjectives
+          courseObjectives={courseObjectives}
+          setCourseObjectives={setCourseObjectives}
+        />
       </Route>
       <Route path={`${path}/create-course/cover`}>
         <CourseCover
