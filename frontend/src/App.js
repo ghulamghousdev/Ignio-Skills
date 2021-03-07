@@ -9,6 +9,7 @@ import Homepage from "./components/Homepage";
 import MentorDashboard from "./components/MentorComponents/MentorDashboard";
 import CourseView from "./components/MentorComponents/CourseViewMentor";
 import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
+import StudentDashboard from "./components/StudentComponents/Dashboard";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/mentor" component={MentorDashboard} />
           <Route path="/courseview" component={CourseView} />
           <Route path="/videoplayer" component={VideoPlayer} />
+          <Route path="/student" component={StudentDashboard} />
           <Route path="/" component={Homepage} />
         </Switch>
       </BrowserRouter>
