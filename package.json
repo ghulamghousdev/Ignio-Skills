@@ -30,6 +30,7 @@
     "multer-gridfs-storage": "^4.2.0",
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.6",
+    "react-accessible-accordion": "^3.3.4",
     "react-responsive-combo-box": "^1.2.4",
     "react-router-dom": "^5.2.0",
     "validator": "^13.1.17"
