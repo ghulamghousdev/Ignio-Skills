@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouteMatch, Route, Switch } from "react-router-dom";
 import CreateCourseManual from "./CreateCourseManual";
 import CourseHeading from "./CourseHeading";
@@ -9,8 +9,9 @@ import CourseCover from "./CourseCover";
 import AddVideo from "./AddVideo";
 import { connect } from "react-redux";
 import { createCourse } from "../../actions/course";
+import { Redirect } from "react-router-dom";
 
-const MentorDashboard = ({ createCourse }) => {
+const MentorDashboard = ({ createCourse, isCreated }) => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
@@ -22,6 +23,10 @@ const MentorDashboard = ({ createCourse }) => {
   const saveData = async (e) => {
     createCourse(title, category, description, courseObjectives, coverName);
   };
+
+  if (isCreated) {
+    return <Redirect to="/mentordashboard" />;
+  }
 
   return (
     <Switch>
@@ -60,4 +65,8 @@ const MentorDashboard = ({ createCourse }) => {
   );
 };
 
-export default connect(null, { createCourse })(MentorDashboard);
+const mapStateToProps = (state) => ({
+  isCreated: state.course.isCreated,
+});
+
+export default connect(mapStateToProps, { createCourse })(MentorDashboard);

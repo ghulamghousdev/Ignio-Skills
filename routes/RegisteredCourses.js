@@ -31,3 +31,5 @@ router.get("/courses", async (req, res) => {
     res.status(400).send({ err });
   }
 });
+
+module.exports = router;
