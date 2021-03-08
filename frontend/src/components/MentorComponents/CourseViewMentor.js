@@ -85,39 +85,11 @@ const CourseView = ({ course, getCourseById, match, isLoading }) => {
                     Course Curriculum
                   </h2>
                   <Accordion allowZeroExpanded>
-                    <AccordionItem key={1}>
-                      <AccordionItemHeading>
-                        <AccordionItemButton>{`Lecture 1: Bawa g ka thulo`}</AccordionItemButton>
-                      </AccordionItemHeading>
-                      <AccordionItemPanel>
-                        {
-                          "Faisal bhai kro paish pain yakka hor sb thk thaaak aaa"
-                        }
-                      </AccordionItemPanel>
-                    </AccordionItem>
-                    <AccordionItem key={2}>
-                      <AccordionItemHeading>
-                        <AccordionItemButton>{`Lecture 1: Bawa g ka thulo`}</AccordionItemButton>
-                      </AccordionItemHeading>
-                      <AccordionItemPanel>
-                        {
-                          "Faisal bhai kro paish pain yakka hor sb thk thaaak aaa"
-                        }
-                      </AccordionItemPanel>
-                    </AccordionItem>
-                    <AccordionItem key={3}>
-                      <AccordionItemHeading>
-                        <AccordionItemButton>{`Lecture 1: Bawa g ka thulo`}</AccordionItemButton>
-                      </AccordionItemHeading>
-                      <AccordionItemPanel>
-                        {
-                          "Faisal bhai kro paish pain yakka hor sb thk thaaak aaa"
-                        }
-                      </AccordionItemPanel>
-                    </AccordionItem>
+          
+                    {/* 
                     <AccordionItem key={4}>
                       <AccordionItemHeading>
-                        <AccordionItemButton>{`Lecture 1: Bawa g ka thulo`}</AccordionItemButton>
+                        <AccordionItemButton>{`Lecture 1: Lorem Ipsum`}</AccordionItemButton>
                       </AccordionItemHeading>
                       <AccordionItemPanel>
                         <div className="video-content">
@@ -129,10 +101,7 @@ const CourseView = ({ course, getCourseById, match, isLoading }) => {
                               borderRight: "1px solid #cccccc",
                             }}
                           >
-                            lorem ipsum dolor hntor
-                            hdfwebkfhwepfhwefhlwefuh[we[fe
-                            fwehfhwerfhef24wfwefwe fwefwe fwefw efwe fgwe
-                            gwegwegrgweg wgentai lorra paye
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                           </p>
                           <img
                             className="video-content__playicon"
@@ -146,7 +115,7 @@ const CourseView = ({ course, getCourseById, match, isLoading }) => {
                           />
                         </div>
                       </AccordionItemPanel>
-                    </AccordionItem>
+                    </AccordionItem> */}
                   </Accordion>
                   <div
                     style={{
@@ -158,7 +127,7 @@ const CourseView = ({ course, getCourseById, match, isLoading }) => {
                     <Link
                       className="add-objective-btn"
                       style={{ marginTop: "20px" }}
-                      to={`/mentor/create-course/content/video`}
+                      to={`/dashboard/create-course/content/video`}
                     >
                       +
                     </Link>

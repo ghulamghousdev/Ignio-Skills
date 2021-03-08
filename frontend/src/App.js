@@ -24,7 +24,7 @@ const App = () => {
           <Route path="/student" component={StudentDashboard} />
           <Route path="/mentordashboard" component={Dashboard} />
           <Route path="/editcourse/:id" component={CourseView} />
-          <Route path="/" component={Homepage} />
+          <Route exact path="/" component={Homepage} />
         </Switch>
       </BrowserRouter>
     </Provider>
