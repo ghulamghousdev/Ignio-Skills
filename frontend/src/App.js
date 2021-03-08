@@ -10,6 +10,8 @@ import MentorDashboard from "./components/MentorComponents/MentorDashboard";
 import CourseView from "./components/MentorComponents/CourseViewMentor";
 import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
 import StudentDashboard from "./components/StudentComponents/Dashboard";
+import Join from "./components/Chatbox/Join";
+import Chat from "./components/Chatbox/Chat";
 
 const App = () => {
   return (
@@ -24,6 +26,9 @@ const App = () => {
           <Route path="/courseview" component={CourseView} />
           <Route path="/videoplayer" component={VideoPlayer} />
           <Route path="/student" component={StudentDashboard} />
+          <Route path="/join" component={Join} exact />
+          <Route path="/chat" component={Chat} />
+
           <Route path="/" component={Homepage} />
         </Switch>
       </BrowserRouter>
