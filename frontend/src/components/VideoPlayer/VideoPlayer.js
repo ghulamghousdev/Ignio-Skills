@@ -1,14 +1,14 @@
-import React from "react";
-import { Player } from "video-react";
+// import React from "react";
+// import { Player } from "video-react";
 
-const VideoPlayer = (props) => {
-  return (
-    <Player
-      playsInline
-      poster="/assets/poster.png"
-      src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
-    />
-  );
-};
+// const VideoPlayer = (props) => {
+//   return (
+//     <Player
+//       playsInline
+//       poster="/assets/poster.png"
+//       src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+//     />
+//   );
+// };
 
-export default VideoPlayer;
+// export default VideoPlayer;
