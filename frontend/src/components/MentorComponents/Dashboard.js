@@ -2,8 +2,11 @@ import { useEffect } from "react";
 import { getCourses } from "../../actions/loadCourse";
 import { connect } from "react-redux";
 import Course from "./Course";
+import { useRouteMatch, Route, Switch} from "react-router-dom";
+import AddVideo from "./AddVideo";
 
 const Dashboard = ({ getCourses, courses, isLoading }) => {
+  let { path } = useRouteMatch();
   useEffect(() => {
     getCourses();
   }, [getCourses]);
@@ -12,9 +15,16 @@ const Dashboard = ({ getCourses, courses, isLoading }) => {
       {!isLoading ? (
         courses && courses.length > 0 ? (
           <div>
+          <div>
             {courses.map((course) => {
               return <Course key={course.id} data={course} />;
             })}
+          </div>
+          <Switch>
+          <Route path={`${path}/create-course/content/video`}>
+        <AddVideo />
+      </Route>
+          </Switch>
           </div>
         ) : (
           <p>No courses found</p>

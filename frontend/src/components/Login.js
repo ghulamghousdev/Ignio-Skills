@@ -21,7 +21,7 @@ const Login = ({ login, isAuthenticated }) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
 
   if (isAuthenticated) {
-    return <Redirect to="/mentordashboard" />;
+    return <Redirect to="/mentor/create-course" />;
   }
 
   return (
