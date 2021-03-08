@@ -1,6 +1,6 @@
 import {
-  COURSE_LOAD_SUCCESS,
-  COURSE_LOAD_FAIL,
+  COURSES_LOAD_SUCCESS,
+  COURSES_LOAD_FAIL,
 } from "../actions/actionTypes.js";
 
 const initialState = {
@@ -10,13 +10,13 @@ const initialState = {
 
 const getCourses = (load = initialState, action) => {
   const { type, payload } = action;
-  if (type === COURSE_LOAD_SUCCESS) {
+  if (type === COURSES_LOAD_SUCCESS) {
     return {
       ...load,
       isLoading: false,
-      courses: payload.data,
+      courses: payload,
     };
-  } else if (type === COURSE_LOAD_FAIL) {
+  } else if (type === COURSES_LOAD_FAIL) {
     return {
       ...load,
       courses: null,

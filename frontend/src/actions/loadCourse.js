@@ -1,4 +1,7 @@
-import { COURSE_LOAD_FAIL, COURSE_LOAD_SUCCESS } from "../actions/actionTypes";
+import {
+  COURSES_LOAD_FAIL,
+  COURSES_LOAD_SUCCESS,
+} from "../actions/actionTypes";
 import axios from "axios";
 
 export const getCourses = () => async (dispatch) => {
@@ -8,14 +11,14 @@ export const getCourses = () => async (dispatch) => {
         "Content-Type": "Application/json",
       },
     };
-    const res = await axios.get("/api/get-courses/", config);
+    const res = await axios.get("/api/createcourse/coursedetails", config);
     dispatch({
-      type: COURSE_LOAD_SUCCESS,
+      type: COURSES_LOAD_SUCCESS,
       payload: res.data,
     });
   } catch (e) {
     dispatch({
-      type: COURSE_LOAD_FAIL,
+      type: COURSES_LOAD_FAIL,
     });
   }
 };
