@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/NavBar.scss";
-const NavBar = () => {
+import {connect} from "react-redux";
+const NavBar = ({isAuthenticated}) => {
   return (
     <div className="nav">
       <div className="row nav__row">
@@ -16,7 +17,8 @@ const NavBar = () => {
             name="search"
           />
         </form>
-        <ul className="nav__menu">
+        {
+          !isAuthenticated ? (<ul className="nav__menu">
           <li className="nav__menu-item">
             <Link className="nav__btn nav__btn--outlined" to="/login">
               Login
@@ -27,10 +29,21 @@ const NavBar = () => {
               Join
             </Link>
           </li>
-        </ul>
+        </ul>) : (<ul className="nav__menu">
+          <li className="nav__menu-item">
+            <Link className="nav__btn nav__btn--outlined" to="/">
+              Logout
+            </Link>
+          </li></ul>)
+        }
+        
       </div>
     </div>
   );
 };
 
-export default NavBar;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+})
+
+export default connect(mapStateToProps, null)(NavBar);
