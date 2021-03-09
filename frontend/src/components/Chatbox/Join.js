@@ -1,42 +1,39 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "../../styles/ChatBox/Join.scss";
+import {connect} from "react-redux";
 
-function Join() {
-  const [name, setName] = useState("");
-  const [room, setRoom] = useState("");
+
+function Join({roomId, username}) {
+
+  const [details, setDetails] = useState({
+    name: "",
+    isSet: false
+  });
+  const onClickHandler = async (event) => {
+    event.preventDefault();
+    await setDetails({
+      name: username,
+      isSet: true,
+    });
+  }
+  const {name, isSet} = details; 
+
+  if(isSet){
+    return <Redirect to={`/chat?name=${name}&room=${roomId}`}/>
+  }
 
   return (
-    <div className="joinOuterContainer">
-      <div className="joinInnerContainer">
-        <h1 className="heading">The Chatbox!</h1>
-        <div>
-          <input
-            type="text"
-            className="joinInput"
-            placeholder="Name"
-            onChange={(event) => setName(event.target.value)}
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            className="joinInput mt-20"
-            placeholder="Room"
-            onChange={(event) => setRoom(event.target.value)}
-          />
-        </div>
-        <Link
-          onClick={(event) => (!name || !room ? event.preventDefault() : null)}
-          to={`/chat?name=${name}&room=${room}`}
+        <button className="joinchat__btn"
+          onClick={(event) => onClickHandler(event)}
         >
-          <button className="button mt-20" type="submit">
-            Join
-          </button>
-        </Link>
-      </div>
-    </div>
+         Join Chat
+        </button>
   );
 }
 
-export default Join;
+const mapStateToProps =(state) => ({
+  username: state.auth.user.username
+})
+
+export default connect(mapStateToProps, null)(Join);
