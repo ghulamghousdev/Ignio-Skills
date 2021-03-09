@@ -68,3 +68,20 @@ body {
 button:focus {
   outline: 0;
 }
+
+.joinchat__btn{
+    padding: 15px 20px;
+    cursor: pointer;
+    border: 1px solid #ffa500;
+    background-color: #ffa500;
+    font-size: 15px;
+    border-radius: 5px;
+    color: #ffffff;
+    transition: 0.3s;
+    font-weight: bold;
+    margin-top: 15px;
+
+    &:hover{
+      background-color: darken(#ffa500, 10);
+    }
+}

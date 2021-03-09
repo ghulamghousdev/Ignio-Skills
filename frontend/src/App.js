@@ -12,6 +12,7 @@ import StudentDashboard from "./components/StudentComponents/Dashboard";
 import Join from "./components/Chatbox/Join";
 import Chat from "./components/Chatbox/Chat";
 import Dashboard from "./components/MentorComponents/Dashboard";
+import Video from "./components/MentorComponents/AddVideo";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
 
           <Route path="/mentordashboard" component={Dashboard} />
           <Route path="/editcourse/:id" component={CourseView} />
+          <Route path="/addvideo" component={Video} />
           <Route exact path="/" component={Homepage} />
         </Switch>
       </BrowserRouter>

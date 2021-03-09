@@ -12,6 +12,7 @@ import "react-accessible-accordion/dist/fancy-example.css";
 import { connect } from "react-redux";
 import { getCourseById } from "../../actions/course";
 import { useEffect } from "react";
+import Join  from "../Chatbox/Join";
 import {
   Accordion,
   AccordionItem,
@@ -21,7 +22,6 @@ import {
 } from "react-accessible-accordion";
 
 const CourseView = ({ course, getCourseById, match, isLoading }) => {
-  console.log(match.params.id);
   useEffect(() => {
     getCourseById(match.params.id);
   }, [match.params.id]);
@@ -35,7 +35,7 @@ const CourseView = ({ course, getCourseById, match, isLoading }) => {
           <div>
             <section className="mainSection">
               <div className="leftCol avatarCont">
-                <img className="image" src={devImg} alt="AVATAR" />
+                <img className="image" src={`http://localhost:5100/api/image/${course.coverName}`} alt="AVATAR" />
                 <h3>{course.user.fullName}</h3>
               </div>
               <div className="rightCol">
@@ -51,15 +51,12 @@ const CourseView = ({ course, getCourseById, match, isLoading }) => {
                     <img src={starImg} alt="Star" />
                   </ul>
                 </div>
-                <div>
-                  <ul className="button">
-                    <a className="enroll" href="enroll">
-                      Enroll
-                    </a>
-                    <a className="chat" href="chat">
-                      <img src={chatImg} alt="Chat Box" />
-                    </a>
-                  </ul>
+                <div style={{
+                  display: "flex",
+                  alignItems: "center"
+                }}>
+                  <Join roomId={match.params.id}/>
+
                 </div>
               </div>
             </section>
@@ -86,10 +83,10 @@ const CourseView = ({ course, getCourseById, match, isLoading }) => {
                   </h2>
                   <Accordion allowZeroExpanded>
           
-                    {/* 
+                     
                     <AccordionItem key={4}>
                       <AccordionItemHeading>
-                        <AccordionItemButton>{`Lecture 1: Lorem Ipsum`}</AccordionItemButton>
+                        <AccordionItemButton>{`Lecture 1: Introduction to IHCI`}</AccordionItemButton>
                       </AccordionItemHeading>
                       <AccordionItemPanel>
                         <div className="video-content">
@@ -101,7 +98,7 @@ const CourseView = ({ course, getCourseById, match, isLoading }) => {
                               borderRight: "1px solid #cccccc",
                             }}
                           >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                            This will give the overview of your course
                           </p>
                           <img
                             className="video-content__playicon"
@@ -115,7 +112,7 @@ const CourseView = ({ course, getCourseById, match, isLoading }) => {
                           />
                         </div>
                       </AccordionItemPanel>
-                    </AccordionItem> */}
+                    </AccordionItem> 
                   </Accordion>
                   <div
                     style={{
@@ -127,7 +124,7 @@ const CourseView = ({ course, getCourseById, match, isLoading }) => {
                     <Link
                       className="add-objective-btn"
                       style={{ marginTop: "20px" }}
-                      to={`/dashboard/create-course/content/video`}
+                      to={`/addvideo`}
                     >
                       +
                     </Link>
