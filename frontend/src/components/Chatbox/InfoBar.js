@@ -2,6 +2,7 @@ import React from "react";
 import "../../styles/ChatBox/InfoBar.scss";
 import onlineIcon from "../../assets/ChatBox/onlineIcon.png";
 import closeIcon from "../../assets/ChatBox/closeIcon.png";
+import {Link} from "react-router-dom";
 
 function InfoBar({ room }) {
   return (
@@ -11,9 +12,9 @@ function InfoBar({ room }) {
         <h3>{room}</h3>
       </div>
       <div className="rightInnerContainer">
-        <a href="/join">
+        <Link to="/mentordashboard">
           <img src={closeIcon} alt="Close" />
-        </a>
+        </Link>
       </div>
     </div>
   );
