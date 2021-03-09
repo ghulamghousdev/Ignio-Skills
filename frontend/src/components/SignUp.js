@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { register } from "../actions/auth";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "../styles/SignUpPage.scss";
 
-const SignUp = ({ register }) => {
+const SignUp = ({ register, isAuthenticated }) => {
   const [credentials, setCredentials] = useState({
     fullName: "",
     email: "",
@@ -20,6 +20,8 @@ const SignUp = ({ register }) => {
     if (password !== password2) {
     } else {
       register(fullName, username, email, password);
+      window.location.href="/login";
+
     }
   };
 
