@@ -15,16 +15,10 @@ const Dashboard = ({ getCourses, courses, isLoading }) => {
       {!isLoading ? (
         courses && courses.length > 0 ? (
           <div>
-          <div>
+            
             {courses.map((course) => {
               return <Course key={course.id} data={course} />;
             })}
-          </div>
-          <Switch>
-          <Route path={`${path}/create-course/content/video`}>
-        <AddVideo />
-      </Route>
-          </Switch>
           </div>
         ) : (
           <p>No courses found</p>
