@@ -79,17 +79,23 @@ body {
     position: absolute;
     left: 24%;
     transform: translate(-50%, -50%);
-}
+    border-radius: 7px 0px 0px 7px;
+  }
+
 .searchbar:focus{
   color: black;
 }
 .page1 .search .searchbtn{
     width: 170%;
     height: 54px;
-    background: #508DA0;
-    border-radius: 0 6px 6px 0;
+    background: #0044ff;
+    border-radius: 0 7px 7px 0;
     font-size: 17px;
     font-weight: 520;
+    margin-top: 31px;
+    margin-right: 4px;
+    color: white;
+    cursor: pointer;
 }
 #search-opt{
   margin-top: 230px;
@@ -114,7 +120,7 @@ body {
   color: #fff;
   font-size: 16px;
   font-weight: 350;
-  min-width: 123px;
+  min-width: 170px;
   border: solid #fff 1px;
   border-radius: 50px;
   float: left;
@@ -123,6 +129,7 @@ body {
   text-decoration: none;
   margin-left: 1%;
   margin-top: 8px;
+  padding: 1%;
 }
 .web-op:hover, .web-op:focus {
   background: #ffffff;
@@ -133,7 +140,7 @@ body {
 }
 #popular {
   position: absolute;
-  margin-top: 60px;
+  margin-top: 40px;
   left: 6.5%;
 }
 #popular a{
@@ -143,7 +150,7 @@ body {
   font-size: 22px;
   color: #fff;
   font-weight: 500;
-  margin-top: 8px;
+  margin-top: 20px;
   display: inline;
   float: left;
 }
@@ -155,11 +162,11 @@ body {
   width: 45%;
   padding: 1%;
 }
-.column img{
+.column > img{
   position: absolute;
-  top: 12%;
-  height: 125%;
-  left: 49.5%;
+  top: 10%;
+  height: 104%;
+  left: 55%;
 }
 
 .c-grid {
@@ -248,30 +255,40 @@ body {
     cursor: pointer;
     margin-top: 2%;
 }
-.mentor-section-bg{
-  padding-left: 20%;
-  padding-bottom: 4%;
-  background-color: rgba(221, 221, 221, 0.486);
-  height: 50%;
-}
 .mentor-section{
-  margin-top: 165px;
-  padding-bottom: 15%;
+  padding: 5% 0%;
+  position: relative;
+}
+
+.mentor-section-bg{
+  background-color: rgba(221, 221, 221, 0.486);
+  padding: 5%;
+  
+}
+.mentor-section > img{
+  position: absolute;
+}
+.teacher-img1{
+  width: 22%;
+  top: 4%;
+  left: 3%;
+
+}
+.teacher-img2{
+  width: 23%;
+  top: 55%;
+  left: 8%;
+
+}.teacher-img3{
+  width: 20%;
+  top: 19%;
+  left: 25.2%;
+
 }
 .mentor-text{
-  padding-left: 41%;
-  padding-top: 4%;
-  line-height: 230%;
-}
-.mentor-text p{
-  margin-top: 2%;
-  font-size: 20px;
-}
-.mentor-section .mentor-section-bg img{
-  position: absolute;
-  width: 40%;
-  left: 10%;
-  top: 248%;
+  margin-left: 50%;
+  width: 45%;
+  line-height: 170%;
 }
 .footer-class{
   padding-top: 0.5%;
