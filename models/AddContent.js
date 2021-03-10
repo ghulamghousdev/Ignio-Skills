@@ -28,7 +28,7 @@ const addContentSchema = mongoose.Schema({
   },
 
   //Defining the video ID property on Add Content Schema
-  videoID: {
+  videoFile: {
     type: String,
     required: true,
     trim: true,

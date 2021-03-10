@@ -61,9 +61,9 @@ router.post(
       const addVideo = {
         videoTitle: req.body.videoTitle,
         videoDescription: req.body.videoDescription,
-        videoID: req.file.filename,
+        videoFile: req.file.filename,
         user: req.user._id,
-        course: req.body.courseId,
+        course: req.body.course,
       };
       console.log(addVideo);
 

@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/AddVideo.scss";
 import { connect } from "react-redux";
 import { uploadVideo } from "../../actions/uploadVideo";
 
-const AddVideo = ({ uploadVideo }) => {
+import { Redirect } from "react-router-dom";
+
+const AddVideo = ({ uploadVideo, isCreated }) => {
   const [file, setFile] = useState(null);
   const [videoTitle, setVideoTitle] = useState("");
   const [videoDescription, setVideoDescription] = useState("");
+  let course;
+  useEffect(() => {
+    course = localStorage.getItem("courseID");
+    console.log(course);
+  });
 
   const handleAddVideo = async (e) => {
-    uploadVideo(videoTitle, videoDescription, file);
+    e.preventDefault();
+    uploadVideo(videoTitle, videoDescription, file, course);
   };
 
   return (
@@ -60,5 +68,7 @@ const AddVideo = ({ uploadVideo }) => {
     </div>
   );
 };
-
+// const mapStateToProps = (state) => ({
+//   isCreated: false,
+// });
 export default connect(null, { uploadVideo })(AddVideo);

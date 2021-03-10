@@ -6,13 +6,13 @@ import chatImg from "../../assets/courseView/chat.png";
 import jsImg from "../../assets/courseView/js.png";
 import playPNG from "../../assets/courseView/play.png";
 import playSVG from "../../assets/courseView/play.svg";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "react-accessible-accordion/dist/fancy-example.css";
 import { connect } from "react-redux";
 import { getCourseById } from "../../actions/course";
 import { useEffect } from "react";
-import Join  from "../Chatbox/Join";
+import Join from "../Chatbox/Join";
 import {
   Accordion,
   AccordionItem,
@@ -26,6 +26,12 @@ const CourseView = ({ course, getCourseById, match, isLoading }) => {
     getCourseById(match.params.id);
   }, [match.params.id]);
 
+  const [courseID, setCourseID] = useState(null);
+  useEffect(() => {
+    setCourseID(match.params.id, courseID);
+    localStorage.setItem("courseID", courseID);
+  });
+
   return (
     <div style={{ marginBottom: "40px" }}>
       {!isLoading ? (
@@ -35,7 +41,11 @@ const CourseView = ({ course, getCourseById, match, isLoading }) => {
           <div>
             <section className="mainSection">
               <div className="leftCol avatarCont">
-                <img className="image" src={`http://localhost:5100/api/image/${course.coverName}`} alt="AVATAR" />
+                <img
+                  className="image"
+                  src={`http://localhost:5100/api/image/${course.coverName}`}
+                  alt="AVATAR"
+                />
                 <h3>{course.user.fullName}</h3>
               </div>
               <div className="rightCol">
@@ -51,12 +61,13 @@ const CourseView = ({ course, getCourseById, match, isLoading }) => {
                     <img src={starImg} alt="Star" />
                   </ul>
                 </div>
-                <div style={{
-                  display: "flex",
-                  alignItems: "center"
-                }}>
-                  <Join roomId={match.params.id}/>
-
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <Join roomId={match.params.id} />
                 </div>
               </div>
             </section>
@@ -82,8 +93,6 @@ const CourseView = ({ course, getCourseById, match, isLoading }) => {
                     Course Curriculum
                   </h2>
                   <Accordion allowZeroExpanded>
-          
-                     
                     <AccordionItem key={4}>
                       <AccordionItemHeading>
                         <AccordionItemButton>{`Lecture 1: Introduction to IHCI`}</AccordionItemButton>
@@ -112,7 +121,7 @@ const CourseView = ({ course, getCourseById, match, isLoading }) => {
                           />
                         </div>
                       </AccordionItemPanel>
-                    </AccordionItem> 
+                    </AccordionItem>
                   </Accordion>
                   <div
                     style={{

@@ -6,7 +6,11 @@ const Course = ({ data }) => {
   return (
     <div className="registered-course">
       <div className="registered-course__img-cont">
-        <img className="registered-course__img" src={`http://localhost:5100/api/image/${data.coverName}`} />
+        <img
+          className="registered-course__img"
+          src={`http://localhost:5100/api/image/${data.coverName}`}
+          alt="cover"
+        />
       </div>
       <div className="registered-course__content">
         <h3 className="registered-course__title">{data.title}</h3>

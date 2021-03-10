@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/NavBar.scss";
-import {connect} from "react-redux";
-const NavBar = ({isAuthenticated}) => {
+import { connect } from "react-redux";
+const NavBar = ({ isAuthenticated }) => {
   return (
     <div className="nav">
       <div className="row nav__row">
@@ -17,26 +17,41 @@ const NavBar = ({isAuthenticated}) => {
             name="search"
           />
         </form>
-        {
-          !isAuthenticated ? (<ul className="nav__menu">
-          <li className="nav__menu-item">
-            <Link className="nav__btn nav__btn--outlined" to="/login">
-              Login
-            </Link>
-          </li>
-          <li className="nav__menu-item">
-            <Link className="nav__btn nav__btn--filled" to="/signup">
-              Join
-            </Link>
-          </li>
-        </ul>) : (<ul className="nav__menu">
-          <li className="nav__menu-item">
-            <Link className="nav__btn nav__btn--outlined" to="/">
-              Logout
-            </Link>
-          </li></ul>)
-        }
-        
+        {!isAuthenticated ? (
+          <ul className="nav__menu">
+            <li className="nav__menu-item">
+              <Link className="nav__btn nav__btn--outlined" to="/login">
+                Login
+              </Link>
+            </li>
+            <li className="nav__menu-item">
+              <Link className="nav__btn nav__btn--filled" to="/signup">
+                Join
+              </Link>
+            </li>
+          </ul>
+        ) : (
+          <ul className="nav__menu">
+            <li className="nav__menu-item">
+              <Link
+                className="nav__btn nav__btn--outlined"
+                to="/mentordashboard"
+              >
+                Mentor
+              </Link>
+            </li>
+            <li className="nav__menu-item">
+              <Link className="nav__btn nav__btn--filled" to="/student">
+                Student
+              </Link>
+            </li>
+            <li className="nav__menu-item">
+              <Link className="nav__btn nav__btn--outlined" to="/">
+                Logout
+              </Link>
+            </li>
+          </ul>
+        )}
       </div>
     </div>
   );
@@ -44,6 +59,6 @@ const NavBar = ({isAuthenticated}) => {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-})
+});
 
 export default connect(mapStateToProps, null)(NavBar);

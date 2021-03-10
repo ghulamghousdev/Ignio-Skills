@@ -6,6 +6,7 @@ import {
 const initialState = {
   data: null,
   isLoading: true,
+  isCreated: false,
 };
 
 const upload = (upload = initialState, action) => {
@@ -15,12 +16,14 @@ const upload = (upload = initialState, action) => {
       ...upload,
       isLoading: false,
       data: payload.data,
+      isCreated: true,
     };
   } else if (type === UPLOAD_VIDEO_FAIL) {
     return {
       ...upload,
       data: null,
       isLoading: false,
+      isCreated: false,
     };
   }
   return upload;
