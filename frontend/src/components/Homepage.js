@@ -38,8 +38,6 @@ const Homepage = () => {
                 </div>
                 <div className="mentor-section">
                   <img className="teacher-img1" src={Teacher} alt="#" />
-                  <img className="teacher-img3" src={Teacher1} alt="#" />
-                  <img className="teacher-img2" src={Teacher2} alt="#" />
                   <div className="mentor-section-bg">
                    
                     <div className="mentor-text">
