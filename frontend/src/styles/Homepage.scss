@@ -248,7 +248,7 @@ input[type="submit"]:active {
 .mentor-join-btn {
   width: 100px;
   height: 40px;
-  background: #508da0;
+  background: #0044ff;
   border-radius: 4px;
   font-size: 14px;
   font-weight: 520;
@@ -260,7 +260,7 @@ input[type="submit"]:active {
   margin-top: 2%;
 }
 .mentor-section {
-  padding: 5% 0%;
+  padding: 10% 0%;
   position: relative;
 }
 
@@ -272,24 +272,25 @@ input[type="submit"]:active {
   position: absolute;
 }
 .teacher-img1 {
-  width: 22%;
-  top: 4%;
-  left: 3%;
+  width: 40%;
+  top: 18%;
+  left: 6.5%;
 }
-.teacher-img2 {
-  width: 23%;
-  top: 55%;
-  left: 8%;
-}
-.teacher-img3 {
-  width: 20%;
-  top: 19%;
-  left: 25.2%;
-}
+
 .mentor-text {
-  margin-left: 50%;
+  margin-left: 53%;
   width: 45%;
   line-height: 170%;
+}
+
+.mentor-text > h1 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.mentor-text > p {
+  font-size: 18px;
+  font-family: Verdana;
 }
 .footer-class {
   padding-top: 0.5%;
