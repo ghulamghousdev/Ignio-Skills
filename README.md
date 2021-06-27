@@ -44,9 +44,13 @@ solution will provide more flexibility and time management to both mentor and st
 - Express.js
 - React.js
 
+## Pre-Requisits
+- Node should be installed.
+- Git should be installed.
+
 ## How to get started?
 1. ### Clone the Repository<br>
-        git clone https://github.com/ahmadzaheer-dev/ignio-skills
+        git clone https://github.com/ghulamghousdev/ignio-skills
         cd ignio-skills
 
 2. ### Installation
@@ -65,4 +69,4 @@ solution will provide more flexibility and time management to both mentor and st
       npm run dev
       ``` 
 ## Found an Issue or any suggestions
-Create issues [here](https://github.com/ahmadzaheer-dev/ignio-skills/issues/new).
+Create issues [here](https://github.com/ghulamghousdev/ignio-skills/issues/new).
